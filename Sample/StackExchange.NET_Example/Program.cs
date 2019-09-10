@@ -42,8 +42,21 @@ namespace StackExchange.NET_Example
 
 			//var getBadgesByIds = client.Badges.GetRecentlyAwardedBadgesByIds(batchIds, badgeFilter);
 
-			var getBadgesByIds = client.Badges.GetAllTaggedBadges(badgeFilter);
-			Console.WriteLine(JsonConvert.SerializeObject(getBadgesByIds));
+			//var getBadgesByIds = client.Badges.GetAllTaggedBadges(badgeFilter);
+			//Console.WriteLine(JsonConvert.SerializeObject(getBadgesByIds));
+
+			var commentFilter = new CommentFilter()
+			{
+				Sort = CommentSort.Creation
+			};
+			//var comments = client.Comments.GetAllComments(commentFilter);
+
+			var commentIds = new List<string>()
+			{
+				"102165885", "102166303"
+			};
+			var comments = client.Comments.GetCommentsByIds(commentIds,commentFilter);
+			Console.WriteLine(JsonConvert.SerializeObject(comments));
 			Console.ReadKey();
 		}
 	}
