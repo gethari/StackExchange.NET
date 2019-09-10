@@ -44,6 +44,21 @@ namespace StackExchange.NET.Models
 		[JsonProperty("question_id")]
 		public long QuestionId { get; set; }
 	}
+	public enum AnswerSort
+	{
+		Activity,
+		Votes,
+		Creation
+	}
 
+	public class AnswerFilters : Filter
+	{
+		public AnswerFilters()
+		{
+			Order = Models.Order.Desc;
+			Sort = AnswerSort.Activity;
+			Site = "stackoverflow";
+		}
+	}
 }
 

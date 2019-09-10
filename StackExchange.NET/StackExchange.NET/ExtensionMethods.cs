@@ -20,11 +20,10 @@ namespace StackExchange.NET
 		private static string ToQueryString(this IDictionary<string, object> parameters) =>
 			string.Join("&", parameters.Select(x => $"{x.Key.ToLower()}={ x.Value}"));
 
-		internal static string GetQueryParams(this QueryFilters filters)
+		internal static string GetQueryParams(this Filter filters)
 		{
 			if (filters == null)
 				return string.Empty;
-
 			var dictionary = new Dictionary<string, dynamic>()
 			{
 				{"fromdate",filters.FromDate.ToUnixTime() },
@@ -40,11 +39,6 @@ namespace StackExchange.NET
 
 			return dictionary.ToQueryString();
 		}
-
-		//internal static string GetEncodedUrl(this string url)
-		//{
-
-		//}
 	}
 
 	internal static class DateTimeExtensions

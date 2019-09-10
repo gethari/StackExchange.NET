@@ -17,26 +17,7 @@ namespace StackExchange.NET.Models
 
 	public abstract class BaseApiRequest
 	{
-		public QueryFilters QueryFilters { get; set; }
-	}
-
-	public class QueryFilters
-	{
-		public QueryFilters()
-		{
-			Order = Models.Order.Desc;
-			Sort = Models.Sort.Activity;
-			Site = "stackoverflow";
-		}
-		public int? Page { get; set; }
-		public int? PageSize { get; set; }
-		public DateTime? FromDate { get; set; }
-		public DateTime? Min { get; set; }
-		public DateTime? Max { get; set; }
-		public DateTime? ToDate { get; set; }
-		public Order? Order { get; set; }
-		public Sort? Sort { get; set; }
-		public string Site { get; set; }
+		public AnswerFilters AnswerFilters { get; set; }
 	}
 
 	public enum Order
@@ -45,10 +26,17 @@ namespace StackExchange.NET.Models
 		Desc
 	}
 
-	public enum Sort
+	public class Filter
 	{
-		Activity,
-		Votes,
-		Creation
+		public int? Page { get; set; }
+		public int? PageSize { get; set; }
+		public DateTime? FromDate { get; set; }
+		public DateTime? ToDate { get; set; }
+		public Order? Order { get; set; }
+		public DateTime? Min { get; set; }
+		public DateTime? Max { get; set; }
+		public dynamic Sort { get; set; }
+		public string Site { get; set; }
 	}
+
 }

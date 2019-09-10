@@ -5,19 +5,19 @@ namespace StackExchange.NET.Interfaces
 {
 	public interface IAnswers
 	{
-		Answers GetAllAnswers(QueryFilters filters);
-		Answers GetAnswerByIds(List<string> ids, QueryFilters filters);
-		Answers GetCommentsByIds(List<string> ids, QueryFilters filters);
-		Questions GetQuestionByAnswerIds(List<string> ids, QueryFilters filters);
-		void AcceptAnAnswer(string id, QueryFilters filters);
-		void UndoAcceptedAnswer(string id, QueryFilters filters);
-		void DeleteAnswer(string id, QueryFilters filters);
-		void DownVoteAnswer(string id, QueryFilters filters);
-		void UndoDownVotedAnswer(string id, QueryFilters filters);
-		void EditAnswer(string id, QueryFilters filters);
-		void GetOptionsOfAnswer(string id, QueryFilters filters);
-		void FlagAnswer(string id, QueryFilters filters);
-		void UpVoteAnswer(string id, QueryFilters filters);
-		void UndoUpVotedAnswer(string id, QueryFilters filters);
+		Answers GetAllAnswers(AnswerFilters filters);
+		Answers GetAnswerByIds(List<string> ids, AnswerFilters filters);
+		Answers GetCommentsByIds(List<string> ids, AnswerFilters filters);
+		Questions GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters);
+		void AcceptAnAnswer(string id, AnswerFilters filters);
+		void UndoAcceptedAnswer(string id, AnswerFilters filters);
+		void DeleteAnswer(string id, AnswerFilters filters);
+		void DownVoteAnswer(string id, AnswerFilters filters);
+		void UndoDownVotedAnswer(string id, AnswerFilters filters);
+		void EditAnswer(string id, AnswerFilters filters);
+		void GetOptionsOfAnswer(string id, AnswerFilters filters);
+		void FlagAnswer(string id, AnswerFilters filters);
+		void UpVoteAnswer(string id, AnswerFilters filters);
+		void UndoUpVotedAnswer(string id, AnswerFilters filters);
 	}
 }
