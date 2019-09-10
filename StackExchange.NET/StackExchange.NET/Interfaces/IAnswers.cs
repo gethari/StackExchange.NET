@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using StackExchange.NET.Models;
 
-namespace StackExchange.NET.Answers
+namespace StackExchange.NET.Interfaces
 {
 	public interface IAnswers
 	{
-		Models.Answers GetAllAnswers(QueryFilters filters);
-		void GetAnswerById(List<string> ids, QueryFilters filters);
+		Answers GetAllAnswers(QueryFilters filters);
+		Answers GetAnswerByIds(List<string> ids, QueryFilters filters);
+		Answers GetCommentsByIds(List<string> ids, QueryFilters filters);
+		Questions GetQuestionByAnswerIds(List<string> ids, QueryFilters filters);
 		void AcceptAnAnswer(string id, QueryFilters filters);
 		void UndoAcceptedAnswer(string id, QueryFilters filters);
 		void DeleteAnswer(string id, QueryFilters filters);

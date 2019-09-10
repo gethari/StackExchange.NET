@@ -18,7 +18,7 @@ namespace StackExchange.NET
 		}
 
 		private static string ToQueryString(this IDictionary<string, object> parameters) =>
-			string.Join("&", parameters.Select(x => $"{x.Key.ToLower()}={x.Value}"));
+			string.Join("&", parameters.Select(x => $"{x.Key.ToLower()}={ x.Value}"));
 
 		internal static string GetQueryParams(this QueryFilters filters)
 		{
@@ -29,18 +29,22 @@ namespace StackExchange.NET
 			{
 				{"fromdate",filters.FromDate.ToUnixTime() },
 				{"todate",filters.ToDate.ToUnixTime() },
-				{"Id",filters.Id },
 				{"max",filters.Max.ToUnixTime() },
 				{"min", filters.Min.ToUnixTime()},
-				{"order", filters.Order},
+				{"order", filters.Order.ToString().ToLower()},
 				{"Page", filters.Page},
 				{"PageSize", filters.PageSize},
-				{"Sort", filters.Sort},
-				{"Site", filters.Site},
+				{"Sort", filters.Sort.ToString().ToLower()},
+				{"Site", filters.Site.ToLower()},
 			};
 
 			return dictionary.ToQueryString();
 		}
+
+		//internal static string GetEncodedUrl(this string url)
+		//{
+
+		//}
 	}
 
 	internal static class DateTimeExtensions

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
@@ -7,7 +6,7 @@ namespace StackExchange.NET.Models
 	public class Answers
 	{
 		[JsonProperty("items")]
-		public List<Item> Items { get; set; }
+		public List<Answer> Items { get; set; }
 
 		[JsonProperty("has_more")]
 		public bool HasMore { get; set; }
@@ -17,8 +16,9 @@ namespace StackExchange.NET.Models
 
 		[JsonProperty("quota_remaining")]
 		public long QuotaRemaining { get; set; }
+
 	}
-	public class Item
+	public class Answer
 	{
 		[JsonProperty("owner")]
 		public Owner Owner { get; set; }
@@ -44,29 +44,6 @@ namespace StackExchange.NET.Models
 		[JsonProperty("question_id")]
 		public long QuestionId { get; set; }
 	}
-	public class Owner
-	{
-		[JsonProperty("reputation")]
-		public long Reputation { get; set; }
 
-		[JsonProperty("user_id")]
-		public long UserId { get; set; }
-
-		[JsonProperty("user_type")]
-		public string UserType { get; set; }
-
-		[JsonProperty("accept_rate", NullValueHandling = NullValueHandling.Ignore)]
-		public long? AcceptRate { get; set; }
-
-		[JsonProperty("profile_image")]
-		public Uri ProfileImage { get; set; }
-
-		[JsonProperty("display_name")]
-		public string DisplayName { get; set; }
-
-		[JsonProperty("link")]
-		public Uri Link { get; set; }
-
-	}
 }
 
