@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 using StackExchange.NET.Models;
 
 namespace StackExchange.NET
@@ -39,6 +40,30 @@ namespace StackExchange.NET
 
 			return dictionary.ToQueryString();
 		}
+
+		internal static T DeserializeJson<T>(this string serializedData)
+		{
+			return JsonConvert.DeserializeObject<T>(serializedData);
+		}
+
+		internal static BaseResponse<T> ValidateApiResponse<T>(this Data<T> data)
+		{
+			var result = new BaseResponse<T>();
+			try
+			{
+				if (data.ErrorId.HasValue)
+					throw new Exceptions.StackExchangeApiException(data.ErrorId.Value, data.ErrorName, data.ErrorMessage);
+
+				result.Data = data;
+				result.Success = true;
+			}
+			catch (Exception ex)
+			{
+				result.Exception = ex;
+				result.Success = false;
+			}
+			return result;
+		}
 	}
 
 	internal static class DateTimeExtensions
@@ -50,4 +75,5 @@ namespace StackExchange.NET
 			return null;
 		}
 	}
+
 }

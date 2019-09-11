@@ -36,7 +36,7 @@ namespace StackExchange.NET.Clients
 			return answers;
 		}
 
-		public Answers GetCommentsByIds(List<string> ids, AnswerFilters filters)
+		Answers IAnswers.GetCommentsByIds(List<string> ids, AnswerFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers/";
@@ -47,7 +47,7 @@ namespace StackExchange.NET.Clients
 			return answers;
 		}
 
-		public Questions GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters)
+		Questions IAnswers.GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers/";

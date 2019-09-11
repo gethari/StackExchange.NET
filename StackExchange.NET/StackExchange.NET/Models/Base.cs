@@ -1,23 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public interface IBaseApiResponse
+	public class BaseResponse<T>
 	{
-		bool Status { get; set; }
-	}
-	public interface IBaseResponse<T> : IBaseApiResponse
-	{
-		List<T> Items { get; set; }
-		bool HasMore { get; set; }
-		int QuotaMax { get; set; }
-		int QuotaRemaining { get; set; }
+		public bool Success { get; set; }
+		public Data<T> Data { get; set; }
+		public Exception Exception { get; set; }
+		
 	}
 
-	public abstract class BaseApiRequest
+	public class Data<T>
 	{
-		public AnswerFilters AnswerFilters { get; set; }
+		[JsonProperty("error_id")]
+		public long? ErrorId { get; set; }
+
+		[JsonProperty("error_message")]
+		public string ErrorMessage { get; set; }
+
+		[JsonProperty("error_name")]
+		public string ErrorName { get; set; }
+		[JsonProperty("items")]
+		public List<T> Items { get; set; }
+
+		[JsonProperty("has_more")]
+		public bool HasMore { get; set; }
+
+		[JsonProperty("quota_max")]
+		public long QuotaMax { get; set; }
+
+		[JsonProperty("quota_remaining")]
+		public long QuotaRemaining { get; set; }
+
 	}
 
 	public enum Order
@@ -26,6 +42,12 @@ namespace StackExchange.NET.Models
 		Desc
 	}
 
+	public enum Sort
+	{
+		Activity,
+		Votes,
+		Creation
+	}
 	public class Filter
 	{
 		public int? Page { get; set; }

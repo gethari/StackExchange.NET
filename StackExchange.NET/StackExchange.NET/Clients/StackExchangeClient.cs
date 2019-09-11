@@ -1,5 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
+using Newtonsoft.Json;
+using StackExchange.NET.Models;
 
 namespace StackExchange.NET.Clients
 {
@@ -18,6 +21,12 @@ namespace StackExchange.NET.Clients
 				AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip
 			};
 			_httpClient = new HttpClient(httpClientHandler);
+		}
+
+		public string ListType<T>(T value)
+		{
+			var valueType = value.GetType().GenericTypeArguments[0].FullName;
+			return valueType;
 		}
 	}
 }

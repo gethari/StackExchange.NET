@@ -14,7 +14,7 @@ namespace StackExchange.NET.Clients
 	{
 		public IBadges Badges => this;
 
-		public Badges GetAllBadges(BadgeFilters filters, string inName = null)
+		Badges IBadges.GetAllBadges(BadgeFilters filters, string inName)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges?key={_apiKey}&{apiParams}&inname={inName}";
@@ -23,7 +23,7 @@ namespace StackExchange.NET.Clients
 			return badges;
 		}
 
-		public Badges GetBadgesByIds(List<string> ids, BadgeFilters filters)
+		Badges IBadges.GetBadgesByIds(List<string> ids, BadgeFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges/";
@@ -34,7 +34,7 @@ namespace StackExchange.NET.Clients
 			return badges;
 		}
 
-		public Badges GetNonTaggedBadges(List<string> ids, BadgeFilters filters)
+		Badges IBadges.GetNonTaggedBadges(List<string> ids, BadgeFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges/name";
@@ -45,7 +45,7 @@ namespace StackExchange.NET.Clients
 			return badges;
 		}
 
-		public Badges GetRecentlyAwardedBadges(BadgeFilters filters)
+		Badges IBadges.GetRecentlyAwardedBadges(BadgeFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges/recipients"+ $"?key={_apiKey}&{apiParams}";
@@ -54,7 +54,7 @@ namespace StackExchange.NET.Clients
 			return badges;
 		}
 
-		public Badges GetRecentlyAwardedBadgesByIds(List<string> ids, BadgeFilters filters)
+		Badges IBadges.GetRecentlyAwardedBadgesByIds(List<string> ids, BadgeFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges/";
@@ -65,7 +65,7 @@ namespace StackExchange.NET.Clients
 			return badges;
 		}
 
-		public Badges GetAllTaggedBadges(BadgeFilters filters, string inName = null)
+		Badges IBadges.GetAllTaggedBadges(BadgeFilters filters, string inName)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/badges/tags"+ $"?key={_apiKey}&{apiParams}";

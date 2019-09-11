@@ -15,7 +15,7 @@ namespace StackExchange.NET_Example
 			{
 				PageSize = 1,
 				Page = 1,
-				Sort = AnswerSort.Votes
+				Sort = Sort.Votes
 			};
 			//var answers = client.Answers.GetAllAnswers(queryString);
 			var ids = new List<string>()
@@ -55,8 +55,32 @@ namespace StackExchange.NET_Example
 			{
 				"102165885", "102166303"
 			};
-			var comments = client.Comments.GetCommentsByIds(commentIds,commentFilter);
-			Console.WriteLine(JsonConvert.SerializeObject(comments));
+			//var comments = client.Comments.GetCommentsByIds(commentIds,commentFilter);
+			//Console.WriteLine(JsonConvert.SerializeObject(comments));
+
+			var postFilter = new PostFilter()
+			{
+				Sort = PostSort.Creation
+			};
+			//var posts = client.Posts.GetAllPosts(postFilter);
+
+			var postIds = new List<string>()
+			{
+				"57871119", "57698255"
+			};
+
+			//var postsByIds = client.Posts.GetAllPostsByIds(postIds, postFilter);
+
+			//var postsByIds = client.Posts.GetCommentsOnPosts(postIds, postFilter);
+
+			//var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
+
+			var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
+			{
+				Sort = Sort.Activity
+			});
+
+			Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
 			Console.ReadKey();
 		}
 	}
