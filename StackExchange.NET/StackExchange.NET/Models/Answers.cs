@@ -1,23 +1,7 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public class Answers
-	{
-		[JsonProperty("items")]
-		public List<Answer> Items { get; set; }
-
-		[JsonProperty("has_more")]
-		public bool HasMore { get; set; }
-
-		[JsonProperty("quota_max")]
-		public long QuotaMax { get; set; }
-
-		[JsonProperty("quota_remaining")]
-		public long QuotaRemaining { get; set; }
-
-	}
 	public class Answer
 	{
 		[JsonProperty("owner")]
@@ -44,7 +28,7 @@ namespace StackExchange.NET.Models
 		[JsonProperty("question_id")]
 		public long QuestionId { get; set; }
 	}
-	
+
 	public class AnswerFilters : Filter
 	{
 		public AnswerFilters()

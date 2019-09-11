@@ -13,23 +13,23 @@ namespace StackExchange.NET.Clients
 	{
 		public IComments Comments => this;
 
-		BaseResponse<Comments> IComments.GetAllComments(CommentFilter filters)
+		BaseResponse<Comment> IComments.GetAllComments(CommentFilter filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/comments?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Comments>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Comment>>().ValidateApiResponse();
 			return apiResult;
 		}
 
-		BaseResponse<Comments> IComments.GetCommentsByIds(List<string> commentIds, CommentFilter filters)
+		BaseResponse<Comment> IComments.GetCommentsByIds(List<string> commentIds, CommentFilter filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/comments/";
 			var idsToEncode = string.Join(";", commentIds.ToArray());
 			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Comments>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Comment>>().ValidateApiResponse();
 			return apiResult;
 		}
 	}

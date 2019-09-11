@@ -1,8 +1,5 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using Newtonsoft.Json;
-using StackExchange.NET.Models;
 
 namespace StackExchange.NET.Clients
 {

@@ -4,21 +4,6 @@ using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public class Questions
-	{
-		[JsonProperty("items")]
-		public List<Question> Items { get; set; }
-
-		[JsonProperty("has_more")]
-		public bool HasMore { get; set; }
-
-		[JsonProperty("quota_max")]
-		public long QuotaMax { get; set; }
-
-		[JsonProperty("quota_remaining")]
-		public long QuotaRemaining { get; set; }
-	}
-
 	public class Question
 	{
 		[JsonProperty("tags")]

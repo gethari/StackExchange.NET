@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-
 	public class Owner
 	{
 		[JsonProperty("reputation")]

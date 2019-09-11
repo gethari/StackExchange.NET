@@ -13,47 +13,47 @@ namespace StackExchange.NET.Clients
 	public partial class StackExchangeClient : IAnswers
 	{
 		public IAnswers Answers => this;
-		BaseResponse<Answers> IAnswers.GetAllAnswers(AnswerFilters filters)
+		BaseResponse<Answer> IAnswers.GetAllAnswers(AnswerFilters filters)
 		{
 			if (filters == null)
 				throw new ArgumentNullException($"Null is not a valid parameter");
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answers>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
 			return apiResult;
 		}
 
-		BaseResponse<Answers> IAnswers.GetAnswerByIds(List<string> ids, AnswerFilters filters)
+		BaseResponse<Answer> IAnswers.GetAnswerByIds(List<string> ids, AnswerFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers/";
 			var idsToEncode = string.Join(";", ids.ToArray());
 			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answers>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
 			return apiResult;
 		}
 
-		BaseResponse<Answers> IAnswers.GetCommentsByIds(List<string> ids, AnswerFilters filters)
+		BaseResponse<Answer> IAnswers.GetCommentsByIds(List<string> ids, AnswerFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers/";
 			var idsToEncode = string.Join(";", ids.ToArray());
 			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"/comments?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answers>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
 			return apiResult;
 		}
 
-		BaseResponse<Questions> IAnswers.GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters)
+		BaseResponse<Question> IAnswers.GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters)
 		{
 			var apiParams = filters.GetQueryParams();
 			var url = $"{_baseApiUrl}/answers/";
 			var idsToEncode = string.Join(";", ids.ToArray());
 			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"/questions?key={_apiKey}&{apiParams}";
 			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Questions>>().ValidateApiResponse();
+			var apiResult = response.DeserializeJson<Data<Question>>().ValidateApiResponse();
 			return apiResult;
 		}
 

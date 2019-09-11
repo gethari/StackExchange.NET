@@ -3,21 +3,6 @@ using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public class Comments
-	{
-		[JsonProperty("items")]
-		public List<Comment> Items { get; set; }
-
-		[JsonProperty("has_more")]
-		public bool HasMore { get; set; }
-
-		[JsonProperty("quota_max")]
-		public long QuotaMax { get; set; }
-
-		[JsonProperty("quota_remaining")]
-		public long QuotaRemaining { get; set; }
-	}
-
 	public class Comment
 	{
 		[JsonProperty("owner")]

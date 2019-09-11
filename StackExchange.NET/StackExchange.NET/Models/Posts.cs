@@ -4,24 +4,6 @@ using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public class Posts
-	{
-		[JsonProperty("items")]
-		public List<Post> Items { get; set; }
-
-		[JsonProperty("has_more")]
-		public bool HasMore { get; set; }
-
-		[JsonProperty("backoff")]
-		public long Backoff { get; set; }
-
-		[JsonProperty("quota_max")]
-		public long QuotaMax { get; set; }
-
-		[JsonProperty("quota_remaining")]
-		public long QuotaRemaining { get; set; }
-	}
-
 	public class Post
 	{
 		[JsonProperty("owner")]

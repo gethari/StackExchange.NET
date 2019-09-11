@@ -23,7 +23,7 @@ namespace StackExchange.NET.Models
 		[JsonProperty("error_name")]
 		public string ErrorName { get; set; }
 		[JsonProperty("items")]
-		public List<T> Items { get; set; }
+		public T[] Items { get; set; }
 
 		[JsonProperty("has_more")]
 		public bool HasMore { get; set; }

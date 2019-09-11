@@ -1,24 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
 {
-	public class Badges
-	{
-		[JsonProperty("items")]
-		public List<Badge> Items { get; set; }
-
-		[JsonProperty("has_more")]
-		public bool HasMore { get; set; }
-
-		[JsonProperty("quota_max")]
-		public long QuotaMax { get; set; }
-
-		[JsonProperty("quota_remaining")]
-		public long QuotaRemaining { get; set; }
-	}
-
 	public class Badge
 	{
 		[JsonProperty("badge_type")]
