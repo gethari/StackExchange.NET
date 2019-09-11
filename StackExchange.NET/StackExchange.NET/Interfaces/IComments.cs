@@ -5,7 +5,7 @@ namespace StackExchange.NET.Interfaces
 {
 	public interface IComments
 	{
-		Comments GetAllComments(CommentFilter commentFilter);
-		Comments GetCommentsByIds(List<string> commentIds, CommentFilter commentFilter);
+		BaseResponse<Comments> GetAllComments(CommentFilter commentFilter);
+		BaseResponse<Comments> GetCommentsByIds(List<string> commentIds, CommentFilter commentFilter);
 	}
 }
