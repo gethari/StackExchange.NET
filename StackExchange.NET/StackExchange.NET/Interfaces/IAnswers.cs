@@ -5,10 +5,10 @@ namespace StackExchange.NET.Interfaces
 {
 	public interface IAnswers
 	{
-		Answers GetAllAnswers(AnswerFilters filters);
-		Answers GetAnswerByIds(List<string> ids, AnswerFilters filters);
-		Answers GetCommentsByIds(List<string> ids, AnswerFilters filters);
-		Questions GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters);
+		BaseResponse<Answers> GetAllAnswers(AnswerFilters filters);
+		BaseResponse<Answers> GetAnswerByIds(List<string> ids, AnswerFilters filters);
+		BaseResponse<Answers> GetCommentsByIds(List<string> ids, AnswerFilters filters);
+		BaseResponse<Questions> GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters);
 		void AcceptAnAnswer(string id, AnswerFilters filters);
 		void UndoAcceptedAnswer(string id, AnswerFilters filters);
 		void DeleteAnswer(string id, AnswerFilters filters);
