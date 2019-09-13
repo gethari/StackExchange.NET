@@ -23,9 +23,9 @@ StackExchange.NET is a .NET Standard managed library that provides easy access t
 
 Currently the library supports 18 Endpoints ( As on 11:09:2019) listed in the [API Docs](https://api.stackexchange.com/docs). I will be covering all the other endpoints as well, except those that require Auth.
 
-StackEchange.NET is FOSS (MIT License) and written entirely in c#.
+StackExchange.NET is FOSS (MIT License) and written entirely in c#.
 
-## Contributers
+## Contributors
 
 ## Usage
 
