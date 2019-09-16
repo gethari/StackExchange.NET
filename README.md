@@ -47,7 +47,7 @@ Noticed the `postFiler` parameter. Similar to that, each method has its own para
 var postFilter = new PostFilter()
 {
     Sort = PostSort.Creation
-;
+};
 ```
 
 ## Parameter Filters
