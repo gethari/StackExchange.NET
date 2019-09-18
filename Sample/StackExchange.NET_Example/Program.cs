@@ -10,14 +10,14 @@ namespace StackExchange.NET_Example
 	{
 		static void Main(string[] args)
 		{
-			var client = new StackExchangeClient("U4DMV*8nvpm3EOpvf69Rxw((");
+			var client = new StackExchangeClient("yourApiKey");
 			var queryString = new AnswerFilters()
 			{
 				PageSize = 1,
 				Page = 1,
 				Sort = Sort.Votes
 			};
-			//var answers = client.Answers.GetAllAnswers(queryString);
+		//	var answers = client.Answers.GetAllAnswers(queryString);
 			var ids = new List<string>()
 						{
 								"44164379","6841479"
@@ -36,11 +36,11 @@ namespace StackExchange.NET_Example
 						{
 								"4600","2600","26"
 						};
-
+			//var getBadgesByIds = client.Badges.GetNonTaggedBadges(batchIds, badgeFilter);
 			//var getBadgesByIds = client.Badges.GetBadgesByIds(batchIds, badgeFilter);
 			//var getBadgesByIds = client.Badges.GetRecentlyAwardedBadges(badgeFilter);
-
-			//var getBadgesByIds = client.Badges.GetRecentlyAwardedBadgesByIds(batchIds, badgeFilter);
+			
+		//	var getBadgesByIds = client.Badges.GetRecentlyAwardedBadgesByIds(batchIds, badgeFilter);
 
 			//var getBadgesByIds = client.Badges.GetAllTaggedBadges(badgeFilter);
 			//Console.WriteLine(JsonConvert.SerializeObject(getBadgesByIds));
@@ -69,19 +69,19 @@ namespace StackExchange.NET_Example
 								"57871119", "57698255"
 						};
 
-			var postsByIds = client.Posts.GetAllPostsByIds(postIds, postFilter);
+			//var postsByIds = client.Posts.GetAllPostsByIds(postIds, postFilter);
 
 
 			//var postsByIds = client.Posts.GetCommentsOnPosts(postIds, postFilter);
 
-			//var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
+		//	var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
 
-			// var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
-			// {
-			// 	Sort = Sort.Activity
-			// });
+			 var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
+			 {
+			 	Sort = PostSort.Creation
+			 });
 
-			//Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
+			Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
 			Console.ReadKey();
 		}
 	}

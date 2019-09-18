@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Web;
+using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
 
@@ -15,46 +15,46 @@ namespace StackExchange.NET.Clients
 		public IAnswers Answers => this;
 		BaseResponse<Answer> IAnswers.GetAllAnswers(AnswerFilters filters)
 		{
-			if (filters == null)
-				throw new ArgumentNullException($"Null is not a valid parameter");
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/answers?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder
+				.Initialize(_apiKey)
+				.ForClient(ClientType.Answers)
+				.WithFilter(filters)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Answer>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Answer> IAnswers.GetAnswerByIds(List<string> ids, AnswerFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/answers/";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Answers)
+				.WithFilter(filters)
+				.WithIds(ids)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Answer>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Answer> IAnswers.GetCommentsByIds(List<string> ids, AnswerFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/answers/";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"/comments?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Answers)
+				.WithFilter(filters)
+				.WithIds(ids)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Answer>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Question> IAnswers.GetQuestionByAnswerIds(List<string> ids, AnswerFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/answers/";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"/questions?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Question>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Answers)
+				.WithFilter(filters)
+				.WithIds(ids)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Question>>().ValidateApiResponse();
+			return response;
 		}
 
 		void IAnswers.AcceptAnAnswer(string id, AnswerFilters filters)

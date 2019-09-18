@@ -1,7 +1,7 @@
 ﻿#region Using Directives
 
 using System.Collections.Generic;
-using System.Web;
+using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
 
@@ -15,62 +15,66 @@ namespace StackExchange.NET.Clients
 
 		BaseResponse<Badge> IBadges.GetAllBadges(BadgeFilters filters, string inName)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges?key={_apiKey}&{apiParams}&inname={inName}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			MakeSure.ArgumentNotNullOrEmptyString(inName, nameof(inName));
+			var url = ApiUrlBuilder
+				.Initialize(_apiKey)
+				.ForClient(ClientType.Badges)
+				.WithFilter(filters, inName)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Badge> IBadges.GetBadgesByIds(List<string> ids, BadgeFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges/";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Badges)
+				.WithFilter(filters)
+				.WithIds(ids)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Badge> IBadges.GetNonTaggedBadges(List<string> ids, BadgeFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges/name";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Badges, "name")
+				.WithFilter(filters)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Badge> IBadges.GetRecentlyAwardedBadges(BadgeFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges/recipients" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Badges, "recipients")
+				.WithFilter(filters)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Badge> IBadges.GetRecentlyAwardedBadgesByIds(List<string> ids, BadgeFilters filters)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges/";
-			var idsToEncode = string.Join(";", ids.ToArray());
-			url = url + $"{HttpUtility.UrlEncode(idsToEncode)}/recipients" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Badges)
+				.WithFilter(filters)
+				.WithIds(ids, "recipients")
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<Badge> IBadges.GetAllTaggedBadges(BadgeFilters filters, string inName)
 		{
-			var apiParams = filters.GetQueryParams();
-			var url = $"{_baseApiUrl}/badges/tags" + $"?key={_apiKey}&{apiParams}";
-			var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
-			var apiResult = response.DeserializeJson<Data<Badge>>().ValidateApiResponse();
-			return apiResult;
+			var url = ApiUrlBuilder.Initialize(_apiKey)
+				.ForClient(ClientType.Badges, "tags")
+				.WithFilter(filters, inName)
+				.GetApiUrl();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<Badge>>().ValidateApiResponse();
+			return response;
 		}
 	}
 }

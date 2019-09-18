@@ -14,9 +14,10 @@
 Created by Hari Haran
 - [StackExchange.NET](#stackexchangenet)
   - [Overview](#overview)
-  - [Contributers](#contributers)
+  - [Contributors](#contributors)
   - [Usage](#usage)
   - [Parameter Filters](#parameter-filters)
+  - [ChangeLogs](#changelogs)
 
 ## Overview
 StackExchange.NET is a .NET Standard managed library that provides easy access to the StackExchange APi's with virtually no boilerplate code required.
@@ -59,4 +60,29 @@ There are different types of parameter filter objects available. Each `Parent Me
 - CommentFilter
 - PostFilter
 
-More to be added soon...
+## ChangeLogs
+  ## Verison 1.1
+  - Improved overall code quality using Fluent API Url Builders
+  - Removed all Hardcoded API URL's
+  - More Clean code
+   
+        # Before V.0 (Initial commit)
+
+        var apiParams = filters.GetQueryParams();
+        var url = $"{_baseApiUrl}/answers?key={_apiKey}&{apiParams}";
+        var response = _httpClient.GetAsync(url).Result.Content.ReadAsStringAsync().Result;
+        var apiResult = response.DeserializeJson<Data<Answer>>().ValidateApiResponse();
+        return apiResult;
+
+        # After V1.1
+
+        var url = ApiUrlBuilder
+                    .Initialize(_apiKey)
+                    .ForClient(ClientType.Answers)
+                    .WithFilter(filters)
+                    .GetApiUrl();
+        var response = _httpClient.GetAsync(url).Result
+                    .ReadAsJsonAsync<Data<Answer>>()
+                    .ValidateApiResponse();
+        return response;
+

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using Newtonsoft.Json;
 using StackExchange.NET.Models;
 
-namespace StackExchange.NET
+namespace StackExchange.NET.Helpers
 {
 	internal static class ExtensionMethods
 	{
@@ -41,11 +42,6 @@ namespace StackExchange.NET
 			return dictionary.ToQueryString();
 		}
 
-		internal static T DeserializeJson<T>(this string serializedData)
-		{
-			return JsonConvert.DeserializeObject<T>(serializedData);
-		}
-
 		internal static BaseResponse<T> ValidateApiResponse<T>(this Data<T> data)
 		{
 			var result = new BaseResponse<T>();
@@ -64,16 +60,18 @@ namespace StackExchange.NET
 			}
 			return result;
 		}
-	}
 
-	internal static class DateTimeExtensions
-	{
-		public static dynamic ToUnixTime(this DateTime? dateTime)
+		internal static dynamic ToUnixTime(this DateTime? dateTime)
 		{
 			if (dateTime.HasValue)
 				return ((DateTimeOffset)dateTime).ToUnixTimeSeconds();
 			return null;
 		}
-	}
 
+		internal static T ReadAsJsonAsync<T>(this HttpResponseMessage content)
+		{
+			return JsonConvert.DeserializeObject<T>(content.Content.ReadAsStringAsync().Result);
+		}
+
+	}
 }
