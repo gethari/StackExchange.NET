@@ -5,7 +5,7 @@ using StackExchange.NET.Clients;
 using StackExchange.NET.Models;
 
 namespace StackExchange.NET_Example
-{
+{	
 	class Program
 	{
 		static void Main(string[] args)
@@ -17,6 +17,7 @@ namespace StackExchange.NET_Example
 				Page = 1,
 				Sort = Sort.Votes
 			};
+			var res = client.Answers.GetAllAnswers(null);
 		//	var answers = client.Answers.GetAllAnswers(queryString);
 			var ids = new List<string>()
 						{

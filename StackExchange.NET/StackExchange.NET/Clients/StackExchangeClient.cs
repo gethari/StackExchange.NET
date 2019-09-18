@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 
 namespace StackExchange.NET.Clients
@@ -11,6 +12,10 @@ namespace StackExchange.NET.Clients
 
 		public StackExchangeClient(string apiKey)
 		{
+			if (string.IsNullOrWhiteSpace(apiKey))
+			{
+				throw new Exception($"Api Key cannot be null or empty : {nameof(apiKey)}");
+			}
 			_apiKey = apiKey;
 			_baseApiUrl = $"https://api.stackexchange.com/2.2";
 			var httpClientHandler = new HttpClientHandler()
