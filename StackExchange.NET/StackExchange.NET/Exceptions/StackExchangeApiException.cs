@@ -2,6 +2,9 @@
 
 namespace StackExchange.NET.Exceptions
 {
+	/// <summary>
+	/// StackExchangeApiException
+	/// </summary>
 	public class StackExchangeApiException : Exception
 	{
 		/// <summary>

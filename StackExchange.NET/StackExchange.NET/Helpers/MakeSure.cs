@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace StackExchange.NET.Helpers
 {
+	/// <summary>
+	/// Used for Validating parameters for Exceptions
+	/// </summary>
 	public abstract class MakeSure
 	{
 		/// <summary>Checks an argument to make sure it isn't null</summary>

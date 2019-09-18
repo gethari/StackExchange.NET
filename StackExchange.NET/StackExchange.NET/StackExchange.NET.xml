@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StackExchange.NET</name>
+    </assembly>
+    <members>
+        <member name="T:StackExchange.NET.Clients.StackExchangeClient">
+            <summary>
+            StackExchangeClient used to perform operations on APIs.
+            </summary>
+        </member>
+        <member name="P:StackExchange.NET.Clients.StackExchangeClient.Answers">
+            <summary>
+            The Answers interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="P:StackExchange.NET.Clients.StackExchangeClient.Badges">
+            <summary>
+            The Badges interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="P:StackExchange.NET.Clients.StackExchangeClient.Comments">
+            <summary>
+            The Comments interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="P:StackExchange.NET.Clients.StackExchangeClient.Posts">
+            <summary>
+            The Posts interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="T:StackExchange.NET.Exceptions.StackExchangeApiException">
+            <summary>
+            StackExchangeApiException
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Exceptions.StackExchangeApiException.#ctor(System.Int64,System.String,System.String)">
+            <summary>
+            Create a new StackExchangeApiException
+            </summary>
+        </member>
+        <member name="F:StackExchange.NET.Exceptions.StackExchangeApiException.ErrorId">
+            <summary>
+            error_id
+            </summary>
+        </member>
+        <member name="F:StackExchange.NET.Exceptions.StackExchangeApiException.ErrorName">
+            <summary>
+            error_name
+            </summary>
+        </member>
+        <member name="F:StackExchange.NET.Exceptions.StackExchangeApiException.ErrorMessage">
+            <summary>
+            error_message
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Helpers.ApiUrlBuilder.#ctor(System.String)">
+            <summary>
+            Constructor used to Build the api url internally
+            </summary>
+            <param name="apiKey"></param>
+        </member>
+        <member name="T:StackExchange.NET.Helpers.ClientType">
+            <summary>
+            The list of Interfaces exposed for consuming the API
+            </summary>
+        </member>
+        <member name="T:StackExchange.NET.Helpers.MakeSure">
+            <summary>
+            Used for Validating parameters for Exceptions
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Helpers.MakeSure.ArgumentNotNull(System.Object,System.String)">
+            <summary>Checks an argument to make sure it isn't null</summary>
+            <param name="value">The argument value to check</param>
+            <param name="name">The name of the argument</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:StackExchange.NET.Helpers.MakeSure.ArgumentNotNullOrEmptyString(System.String,System.String)">
+            <summary>
+            Checks a string argument to ensure it isn't null or empty.
+            </summary>
+            <param name = "value">The argument value to check</param>
+            <param name = "name">The name of the argument</param>
+        </member>
+        <member name="T:StackExchange.NET.Interfaces.IAnswers">
+            <summary>
+            The Answers interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IAnswers.GetAllAnswers(StackExchange.NET.Models.AnswerFilters)">
+            <summary>Returns all the undeleted answers in the system.</summary>
+            <param name="filters">The Answer filters.</param>
+            <returns>This method returns a list of answers</returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IAnswers.GetAnswerByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.AnswerFilters)">
+            <summary>
+            Gets the set of answers identified by ids.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IAnswers.GetCommentsOnAnswers(System.Collections.Generic.List{System.String},StackExchange.NET.Models.AnswerFilters)">
+            <summary>
+            Gets the comments on a set of answers.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IAnswers.GetQuestionByAnswerIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.AnswerFilters)">
+            <summary>
+            Returns the questions that answers identified by {ids} are on.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StackExchange.NET.Interfaces.IBadges">
+            <summary>
+            The Badges interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetAllBadges(StackExchange.NET.Models.BadgeFilters,System.String)">
+            <summary>
+            Returns all the badges in the system.
+            </summary>
+            <param name="filters"></param>
+            <param name="inName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetBadgesByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.BadgeFilters)">
+            <summary>
+            Gets the badges identified in id.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetNonTaggedBadges(System.Collections.Generic.List{System.String},StackExchange.NET.Models.BadgeFilters)">
+            <summary>
+            Gets all explicitly named badges in the system.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetRecentlyAwardedBadges(StackExchange.NET.Models.BadgeFilters)">
+            <summary>
+            Returns recently awarded badges in the system.
+            </summary>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetRecentlyAwardedBadgesByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.BadgeFilters)">
+            <summary>
+            Returns recently awarded badges in the system, constrained to a certain set of badges.
+            </summary>
+            <param name="ids"></param>
+            <param name="filters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IBadges.GetAllTaggedBadges(StackExchange.NET.Models.BadgeFilters,System.String)">
+            <summary>
+            Returns the badges that are awarded for participation in specific tags.
+            </summary>
+            <param name="filters"></param>
+            <param name="inName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StackExchange.NET.Interfaces.IComments">
+            <summary>
+            The Comments interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IComments.GetAllComments(StackExchange.NET.Models.CommentFilter)">
+            <summary>
+            Gets all the comments on the site
+            </summary>
+            <param name="commentFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IComments.GetCommentsByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.CommentFilter)">
+            <summary>
+            Gets the comments identified in id.
+            </summary>
+            <param name="commentIds"></param>
+            <param name="commentFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StackExchange.NET.Interfaces.IPosts">
+            <summary>
+            The Posts interface which lists all possible operations.
+            </summary>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IPosts.GetAllPosts(StackExchange.NET.Models.PostFilter)">
+            <summary>
+            Fetches all posts (questions and answers) on the site.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IPosts.GetAllPostsByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.PostFilter)">
+            <summary>
+            Fetches a set of posts by ids.
+            
+            This method is meant for grabbing an object when unsure whether an id identifies a question or an answer. This is most common with user entered data.
+            </summary>
+            <param name="ids"></param>
+            <param name="postFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IPosts.GetCommentsOnPosts(System.Collections.Generic.List{System.String},StackExchange.NET.Models.PostFilter)">
+            <summary>
+            Gets the comments on the posts identified in ids, regardless of the type of the posts.
+            
+            This method is meant for cases when you are unsure of the type of the post id provided. Generally, this would be due to obtaining the post id directly from a user.
+            </summary>
+            <param name="ids"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IPosts.GetRevisionsByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.PostFilter)">
+            <summary>
+            Returns edit revisions for the posts identified in ids.
+            </summary>
+            <param name="ids"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.IPosts.GetSuggestedEdits(System.Collections.Generic.List{System.String},StackExchange.NET.Models.SuggestedEditFilter)">
+            <summary>
+            Returns suggested edits on the posts identified in ids.
+            </summary>
+            <param name="ids"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

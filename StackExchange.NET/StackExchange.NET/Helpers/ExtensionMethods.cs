@@ -10,7 +10,7 @@ namespace StackExchange.NET.Helpers
 {
 	internal static class ExtensionMethods
 	{
-		public static string GetQueryString(this object obj)
+		internal static string GetQueryString(this object obj)
 		{
 			var properties = from p in obj.GetType().GetProperties()
 											 where p.GetValue(obj, null) != null

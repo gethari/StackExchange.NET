@@ -11,6 +11,10 @@ namespace StackExchange.NET.Helpers
 		private string _filter;
 		private readonly string _apiKey;
 
+		/// <summary>
+		/// Constructor used to Build the api url internally
+		/// </summary>
+		/// <param name="apiKey"></param>
 		public ApiUrlBuilder(string apiKey)
 		{
 			_apiKey = apiKey;

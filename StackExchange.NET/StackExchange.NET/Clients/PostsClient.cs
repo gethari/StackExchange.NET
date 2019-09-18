@@ -13,6 +13,9 @@ namespace StackExchange.NET.Clients
 {
 	public partial class StackExchangeClient : IPosts
 	{
+		/// <summary>
+		/// The Posts interface which lists all possible operations.
+		/// </summary>
 		public IPosts Posts => this;
 
 		BaseResponse<Post> IPosts.GetAllPosts(PostFilter filters)

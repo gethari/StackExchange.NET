@@ -11,6 +11,9 @@ namespace StackExchange.NET.Clients
 {
 	public partial class StackExchangeClient : IBadges
 	{
+		/// <summary>
+		/// The Badges interface which lists all possible operations.
+		/// </summary>
 		public IBadges Badges => this;
 
 		BaseResponse<Badge> IBadges.GetAllBadges(BadgeFilters filters, string inName)

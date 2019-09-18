@@ -5,7 +5,7 @@ using StackExchange.NET.Clients;
 using StackExchange.NET.Models;
 
 namespace StackExchange.NET_Example
-{	
+{
 	class Program
 	{
 		static void Main(string[] args)
@@ -17,14 +17,14 @@ namespace StackExchange.NET_Example
 				Page = 1,
 				Sort = Sort.Votes
 			};
-			var res = client.Answers.GetAllAnswers(null);
-		//	var answers = client.Answers.GetAllAnswers(queryString);
+
+			//	var answers = client.Answers.GetAllAnswers(queryString);
 			var ids = new List<string>()
 						{
 								"44164379","6841479"
 						};
 			//var answers = client.Answers.GetAnswerByIds(ids, queryString);
-			//var answers = client.Answers.GetCommentsByIds(ids, queryString);
+			//var answers = client.Answers.GetCommentsOnAnswers(ids, queryString);
 			//var answers = client.Answers.GetQuestionByAnswerIds(ids, queryString);
 
 			var badgeFilter = new BadgeFilters()
@@ -40,8 +40,8 @@ namespace StackExchange.NET_Example
 			//var getBadgesByIds = client.Badges.GetNonTaggedBadges(batchIds, badgeFilter);
 			//var getBadgesByIds = client.Badges.GetBadgesByIds(batchIds, badgeFilter);
 			//var getBadgesByIds = client.Badges.GetRecentlyAwardedBadges(badgeFilter);
-			
-		//	var getBadgesByIds = client.Badges.GetRecentlyAwardedBadgesByIds(batchIds, badgeFilter);
+
+			//	var getBadgesByIds = client.Badges.GetRecentlyAwardedBadgesByIds(batchIds, badgeFilter);
 
 			//var getBadgesByIds = client.Badges.GetAllTaggedBadges(badgeFilter);
 			//Console.WriteLine(JsonConvert.SerializeObject(getBadgesByIds));
@@ -56,7 +56,7 @@ namespace StackExchange.NET_Example
 						{
 								"102165885", "102166303"
 						};
-			//var comments = client.Comments.GetCommentsByIds(commentIds,commentFilter);
+			//var comments = client.Comments.GetCommentsOnAnswers(commentIds,commentFilter);
 			//Console.WriteLine(JsonConvert.SerializeObject(comments));
 
 			var postFilter = new PostFilter()
@@ -75,12 +75,12 @@ namespace StackExchange.NET_Example
 
 			//var postsByIds = client.Posts.GetCommentsOnPosts(postIds, postFilter);
 
-		//	var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
+			//	var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
 
-			 var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
-			 {
-			 	Sort = PostSort.Creation
-			 });
+			var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
+			{
+				Sort = PostSort.Creation
+			});
 
 			Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
 			Console.ReadKey();

@@ -1,6 +1,5 @@
 ﻿#region Using Directives
 
-using System;
 using System.Collections.Generic;
 using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
@@ -10,8 +9,14 @@ using StackExchange.NET.Models;
 
 namespace StackExchange.NET.Clients
 {
+	/// <summary>
+	/// StackExchangeClient used to perform operations on APIs.
+	/// </summary>
 	public partial class StackExchangeClient : IAnswers
 	{
+		/// <summary>
+		/// The Answers interface which lists all possible operations.
+		/// </summary>
 		public IAnswers Answers => this;
 		BaseResponse<Answer> IAnswers.GetAllAnswers(AnswerFilters filters)
 		{
@@ -35,7 +40,7 @@ namespace StackExchange.NET.Clients
 			return response;
 		}
 
-		BaseResponse<Answer> IAnswers.GetCommentsByIds(List<string> ids, AnswerFilters filters)
+		BaseResponse<Answer> IAnswers.GetCommentsOnAnswers(List<string> ids, AnswerFilters filters)
 		{
 			var url = ApiUrlBuilder.Initialize(_apiKey)
 				.ForClient(ClientType.Answers)
@@ -57,54 +62,5 @@ namespace StackExchange.NET.Clients
 			return response;
 		}
 
-		void IAnswers.AcceptAnAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.UndoAcceptedAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.DeleteAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.DownVoteAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.UndoDownVotedAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.EditAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.GetOptionsOfAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.FlagAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.UpVoteAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
-
-		void IAnswers.UndoUpVotedAnswer(string id, AnswerFilters filters)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

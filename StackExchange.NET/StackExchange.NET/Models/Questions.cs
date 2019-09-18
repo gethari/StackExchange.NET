@@ -45,4 +45,24 @@ namespace StackExchange.NET.Models
 		[JsonProperty("title")]
 		public string Title { get; set; }
 	}
+
+	public enum QuestionSort
+	{
+		Activity,
+		Votes,
+		Creation,
+		Hot,
+		Week,
+		Month
+	}
+
+	public class QuestionFilters : Filter
+	{
+		public QuestionFilters()
+		{
+			Order = Models.Order.Desc;
+			Sort = QuestionSort.Week;
+			Site = "stackoverflow";
+		}
+	}
 }

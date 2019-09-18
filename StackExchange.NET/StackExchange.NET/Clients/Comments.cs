@@ -11,6 +11,9 @@ namespace StackExchange.NET.Clients
 {
 	public partial class StackExchangeClient : IComments
 	{
+		/// <summary>
+		/// The Comments interface which lists all possible operations.
+		/// </summary>
 		public IComments Comments => this;
 
 		BaseResponse<Comment> IComments.GetAllComments(CommentFilter filters)
