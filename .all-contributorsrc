@@ -1,0 +1,23 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "PandiyanCool",
+      "name": "Pandiyan Murugan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6157834?v=4",
+      "profile": "http://efficientuser.com",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "StackExchange.NET",
+  "projectOwner": "gethari",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
