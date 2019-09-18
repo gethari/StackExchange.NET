@@ -1,4 +1,5 @@
 # StackExchange.NET
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 ```
  _____ _             _    ______          _                              _   _ ______ _______ 
@@ -27,6 +28,15 @@ StackExchange.NET is FOSS (MIT License) and written entirely in c#.
 
 ## Contributors
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="http://efficientuser.com"><img src="https://avatars1.githubusercontent.com/u/6157834?v=4" width="100px;" alt="Pandiyan Murugan"/><br /><sub><b>Pandiyan Murugan</b></sub></a><br /><a href="https://github.com/gethari/StackExchange.NET/commits?author=PandiyanCool" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 ## Usage
 
 To create a new API instance provide the apikey. If you need a new key check [docs](https://stackapps.com/apps/oauth/register)
