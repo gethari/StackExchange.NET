@@ -8,6 +8,7 @@
 		Answers,
 		Badges,
 		Comments,
-		Posts
+		Posts,
+		Questions
 	}
 }

@@ -61,7 +61,7 @@ namespace StackExchange.NET.Models
 		public QuestionFilters()
 		{
 			Order = Models.Order.Desc;
-			Sort = QuestionSort.Week;
+			Sort = QuestionSort.Hot;
 			Site = "stackoverflow";
 		}
 	}
