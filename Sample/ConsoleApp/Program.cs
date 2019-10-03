@@ -10,7 +10,7 @@ namespace StackExchange.NET_Example
 	{
 		static void Main(string[] args)
 		{
-			var client = new StackExchangeClient("U4DMV*8nvpm3EOpvf69Rxw((");
+			var client = new StackExchangeClient("your_ApiKey");
 			var queryString = new AnswerFilters()
 			{
 				PageSize = 1,
@@ -103,6 +103,19 @@ namespace StackExchange.NET_Example
 			//var getFeaturedQuestions = client.Questions.GetFeaturedQuestions(questionFilter);
 			//var getQuestionsWithNoAnswers = client.Questions.GetQuestionsWithNoAnswers(questionFilter);
 			//var getUnansweredQuestions = client.Questions.GetUnansweredQuestions(questionFilter);
+
+			var suggestedEditFilter = new SuggestedEditFilter()
+			{
+				Sort = Sort.Creation
+			};
+
+			var sEditIds = new List<string>()
+			{
+				"4509686"
+			};
+
+			//var result = client.SuggestedEdits.GetAllSuggestedEdits(suggestedEditFilter);
+			var result = client.SuggestedEdits.GetSuggestedEditsByIds(sEditIds, suggestedEditFilter);
 			Console.ReadKey();
 		}
 	}
