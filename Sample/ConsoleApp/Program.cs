@@ -10,7 +10,7 @@ namespace StackExchange.NET_Example
 	{
 		static void Main(string[] args)
 		{
-			var client = new StackExchangeClient("yourApiKey");
+			var client = new StackExchangeClient("U4DMV*8nvpm3EOpvf69Rxw((");
 			var queryString = new AnswerFilters()
 			{
 				PageSize = 1,
@@ -77,12 +77,32 @@ namespace StackExchange.NET_Example
 
 			//	var revisionByIds = client.Posts.GetRevisionsByIds(postIds, postFilter);
 
-			var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
-			{
-				Sort = PostSort.Creation
-			});
+			//var suggestedEdits = client.Posts.GetSuggestedEdits(postIds, new SuggestedEditFilter()
+			//{
+			//	Sort = PostSort.Creation
+			//});
 
-			Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
+			//Console.WriteLine(JsonConvert.SerializeObject(suggestedEdits));
+
+			var questionFilter = new QuestionFilters()
+			{
+				Sort = Sort.Activity
+			};
+
+			var qIds = new List<string>()
+			{
+				"58054349", "58038242"
+			};
+			
+			//var result = client.Questions.GetAllQuestions(questionFilter);
+			//var result = client.Questions.GetQuestionsByIds(qIds,questionFilter);
+			//var result = client.Questions.GetAnswersByQuestionIds(qIds,questionFilter);
+			//var result = client.Questions.GetCommentsByQuestionIds(qIds,questionFilter);
+			//var linked = client.Questions.GetLinkedQuestions(qIds, questionFilter);
+			//var related = client.Questions.GetRelatedQuestions(qIds, questionFilter);
+			//var getFeaturedQuestions = client.Questions.GetFeaturedQuestions(questionFilter);
+			//var getQuestionsWithNoAnswers = client.Questions.GetQuestionsWithNoAnswers(questionFilter);
+			//var getUnansweredQuestions = client.Questions.GetUnansweredQuestions(questionFilter);
 			Console.ReadKey();
 		}
 	}

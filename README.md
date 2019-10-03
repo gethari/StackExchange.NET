@@ -15,17 +15,23 @@
 Created by Hari Haran
 - [StackExchange.NET](#stackexchangenet)
   - [Overview](#overview)
+  - [Installation](#installation)
   - [Contributors](#contributors)
   - [Usage](#usage)
   - [Parameter Filters](#parameter-filters)
+  - [Contributing](#contributing)
   - [ChangeLogs](#changelogs)
-
+  
 ## Overview
 StackExchange.NET is a .NET Standard managed library that provides easy access to the StackExchange APi's with virtually no boilerplate code required.
 
 Currently the library supports 18 Endpoints ( As on 11:09:2019) listed in the [API Docs](https://api.stackexchange.com/docs). I will be covering all the other endpoints as well, except those that require Auth.
 
 StackExchange.NET is FOSS (MIT License) and written entirely in c#.
+
+## Installation
+
+Use a NuGet package reference inside your project with the name [`StackExchange.NET`](https://www.nuget.org/packages/StackExchange.NET/) Alternatively, binaries can be pulled from the build server linked above under artifacts or compiled manually from the build folder.
 
 ## Contributors
 
@@ -69,6 +75,10 @@ There are different types of parameter filter objects available. Each `Parent Me
 - BadgeFilters
 - CommentFilter
 - PostFilter
+
+## Contributing
+
+If you're looking to contribute, thanks for your interest. Feel free to submit reports for any issues you can find, or request potential features you'd like to see [here](https://github.com/gethari/StackExchange.NET/issues).
 
 ## ChangeLogs
   ## Verison 1.1
