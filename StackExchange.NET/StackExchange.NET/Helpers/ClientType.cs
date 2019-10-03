@@ -9,6 +9,7 @@
 		Badges,
 		Comments,
 		Posts,
-		Questions
+		Questions,
+		Suggested_Edits
 	}
 }

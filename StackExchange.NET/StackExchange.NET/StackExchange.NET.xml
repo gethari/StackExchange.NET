@@ -34,6 +34,11 @@
             StackExchangeClient used to perform operations on APIs.
             </summary>
         </member>
+        <member name="P:StackExchange.NET.Clients.StackExchangeClient.SuggestedEdits">
+            <summary>
+            The SuggestedEdits interface which lists all possible operations.
+            </summary>
+        </member>
         <member name="T:StackExchange.NET.Exceptions.StackExchangeApiException">
             <summary>
             StackExchangeApiException
@@ -340,6 +345,20 @@
             Returns questions the site considers to be unanswered.
             
             Note that just because a question has an answer, that does not mean it is considered answered. While the rules are subject to change, at this time a question must have at least one upvoted answer to be considered answered.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ISuggestedEdits.GetAllSuggestedEdits(StackExchange.NET.Models.SuggestedEditFilter)">
+            <summary>
+            Returns all the suggested edits in the systems.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ISuggestedEdits.GetSuggestedEditsByIds(System.Collections.Generic.List{System.String},StackExchange.NET.Models.SuggestedEditFilter)">
+            <summary>
+            Returns suggested edits identified in ids.
+            
+            {ids} can contain up to 100 semicolon delimited ids. To find ids programmatically look for suggested_edit_id on suggested_edit objects.
             </summary>
             <returns></returns>
         </member>

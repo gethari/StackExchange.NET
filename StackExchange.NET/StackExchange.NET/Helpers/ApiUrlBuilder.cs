@@ -21,24 +21,24 @@ namespace StackExchange.NET.Helpers
 		}
 		public static IApiUrlHelper Initialize(string apikey) => new ApiUrlBuilder(apikey);
 
-		public ApiUrlBuilder ForClient(ClientType type,string route ="")
+		public ApiUrlBuilder ForClient(ClientType type, string route = "")
 		{
-			if (string.IsNullOrEmpty(route) || string.IsNullOrWhiteSpace(route))
+			//Some API url's have hyphens in it. Since its not possible to use Hyphens in enums, using Underscore and replacing it as a workaround!
+			if (type.ToString().Contains("_"))
 			{
-				_apiUrl = $"{BaseUrl}{type.ToString().ToLower()}/";
+				_apiUrl = $"{BaseUrl}{type.ToString().Replace("_", "-").ToLower()}/";
 			}
-			else
+			if (!(string.IsNullOrEmpty(route) || string.IsNullOrWhiteSpace(route)))
 			{
 				_apiUrl = $"{BaseUrl}{type.ToString().ToLower()}/{route}";
 			}
-			
 			return this;
 		}
 
-		public ApiUrlBuilder WithFilter(Filter filter, string inName="")
+		public ApiUrlBuilder WithFilter(Filter filter, string inName = "")
 		{
 			MakeSure.ArgumentNotNull(filter, nameof(filter));
-			
+
 			if (string.IsNullOrEmpty(inName) || string.IsNullOrWhiteSpace(inName))
 			{
 				_filter = filter.GetQueryParams();
@@ -51,7 +51,7 @@ namespace StackExchange.NET.Helpers
 			return this;
 		}
 
-		public ApiUrlBuilder WithIds(List<string> ids,string route ="")
+		public ApiUrlBuilder WithIds(List<string> ids, string route = "")
 		{
 			MakeSure.ArgumentNotNullOrEmptyEnumerable(ids, nameof(ids));
 			var idsToEncode = string.Join(";", ids.ToArray());
