@@ -10,6 +10,7 @@
 		Comments,
 		Posts,
 		Questions,
-		Suggested_Edits
+		Suggested_Edits,
+		Tags
 	}
 }

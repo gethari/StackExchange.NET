@@ -362,6 +362,80 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetAllTags(StackExchange.NET.Models.TagFilter)">
+            <summary>
+            Returns the tags found on a site.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetTagsByNames(System.Collections.Generic.List{System.String},StackExchange.NET.Models.TagFilter)">
+            <summary>
+            Returns tag objects representing the tags in {tags} found on the site.
+            </summary>
+            <param name="tags"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetModeratorOnlyTags(StackExchange.NET.Models.TagFilter)">
+            <summary>
+            Returns the tags found on a site that only moderators can use.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetAllTagSynonyms(StackExchange.NET.Models.TagFilter)">
+            <summary>
+            Returns all tag synonyms found on the site.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetFrequentlyAskedQuestions(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get frequently asked questions in a set of tags.
+            </summary>
+            <param name="tags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetRelatedTags(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get related tags, based on common tag pairings.
+            </summary>
+            <param name="tags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetSynonymsForTags(System.Collections.Generic.List{System.String},StackExchange.NET.Models.TagFilter)">
+            <summary>
+            Get the synonyms for a specific set of tags.
+            </summary>
+            <param name="tags"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetTopAnswerersPosts(System.String,System.String)">
+            <summary>
+            Get the top answer posters in a specific tag, either in the last month or for all time
+            </summary>
+            <param name="tag"></param>
+            <param name="period"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetTopAskers(System.String,System.String)">
+            <summary>
+            Get the top question askers in a specific tag, either in the last month or for all time
+            </summary>
+            <param name="tag"></param>
+            <param name="period"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StackExchange.NET.Interfaces.ITags.GetTagWiki(System.Collections.Generic.List{System.String})">
+            <summary>
+            Get the wiki entries for a set of tags.
+            </summary>
+            <param name="tags"></param>
+            <returns></returns>
+        </member>
         <member name="T:StackExchange.NET.Models.AnswerFilters">
             <summary>
             This filter should be used while using the Answers methods.

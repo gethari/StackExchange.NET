@@ -32,6 +32,10 @@ namespace StackExchange.NET.Helpers
 			{
 				_apiUrl = $"{BaseUrl}{type.ToString().ToLower()}/{route}";
 			}
+			else
+			{
+				_apiUrl = $"{BaseUrl}{type.ToString().ToLower()}/";
+			}
 			return this;
 		}
 
@@ -69,6 +73,14 @@ namespace StackExchange.NET.Helpers
 		public string GetApiUrl()
 		{
 			_apiUrl = $"{_apiUrl}?key={_apiKey}&{_filter}";
+
+			//Some methods do not have a filter which contains the site attribute,Adding this additional 
+			//check here to find and add the site filter if it does not exist in the URL
+			if (!_apiUrl.Contains("site"))
+			{
+				_apiUrl = $"{_apiUrl}&{"&site=stackoverflow&filter=default"}";
+			}
+
 			return _apiUrl;
 		}
 	}
