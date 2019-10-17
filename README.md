@@ -22,9 +22,10 @@ Created by Hari Haran
   - [Parameter Filters](#parameter-filters)
   - [Contributing](#contributing)
   - [ChangeLogs](#changelogs)
-  - [Version 1.3](#version-13)
-  - [Version 1.2](#version-12)
-  - [Version 1.1](#version-11)
+    - [Version 1.3](#version-13)
+    - [Version 1.2](#version-12)
+    - [Version 1.1](#version-11)
+
   
 ## Overview
 StackExchange.NET is a .NET Standard managed library that provides easy access to the StackExchange APi's with virtually no boilerplate code required.
@@ -92,12 +93,12 @@ There are different types of parameter filter objects available. Each `Parent Me
 If you're looking to contribute, thanks for your interest. Feel free to submit reports for any issues you can find, or request potential features you'd like to see [here](https://github.com/gethari/StackExchange.NET/issues).
 
 ## ChangeLogs
-  ## Version 1.3
+  ### Version 1.3
   - Added support for most of the methods in Tags interface.
-  ## Version 1.2
+  ### Version 1.2
   - Added support for Suggested Edits API's
 
-  ## Version 1.1
+  ### Version 1.1
   - Improved overall code quality using Fluent API Url Builders
   - Removed all Hardcoded API URL's
   - More Clean code
