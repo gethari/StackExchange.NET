@@ -96,12 +96,26 @@ namespace StackExchange.NET.Clients
 
 		BaseResponse<TagScore> ITags.GetTopAnswerersPosts(string tag, string period)
 		{
-			throw new System.NotImplementedException();
+			var url = ApiUrlBuilder
+				.Initialize(_apiKey)
+				.ForClient(ClientType.Tags)
+				.WithTagAndPeriod(tag, $"top-answerers/{period}")
+				.GetApiUrl();
+
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagScore>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<TagScore> ITags.GetTopAskers(string tag, string period)
 		{
-			throw new System.NotImplementedException();
+			var url = ApiUrlBuilder
+				.Initialize(_apiKey)
+				.ForClient(ClientType.Tags)
+				.WithTagAndPeriod(tag, $"top-askers/{period}")
+				.GetApiUrl();
+
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagScore>>().ValidateApiResponse();
+			return response;
 		}
 
 		BaseResponse<TagWiki> ITags.GetTagWiki(List<string> tags)

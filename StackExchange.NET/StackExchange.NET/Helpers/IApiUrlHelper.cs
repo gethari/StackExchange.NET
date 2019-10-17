@@ -8,5 +8,6 @@ namespace StackExchange.NET.Helpers
 		ApiUrlBuilder ForClient(ClientType type, string route = "");
 		ApiUrlBuilder WithFilter(Filter filter, string inName = "");
 		ApiUrlBuilder WithIds(List<string> ids, string route = "");
+		ApiUrlBuilder WithTagAndPeriod(string tag, string period);
 	}
 }

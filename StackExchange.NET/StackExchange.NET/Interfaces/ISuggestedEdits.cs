@@ -3,6 +3,9 @@ using StackExchange.NET.Models;
 
 namespace StackExchange.NET.Interfaces
 {
+	/// <summary>
+	/// The SuggestedEdits interface which lists all possible operations.
+	/// </summary>
 	public interface ISuggestedEdits
 	{
 		/// <summary>

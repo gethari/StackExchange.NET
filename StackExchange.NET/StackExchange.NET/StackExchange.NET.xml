@@ -348,6 +348,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:StackExchange.NET.Interfaces.ISuggestedEdits">
+            <summary>
+            The SuggestedEdits interface which lists all possible operations.
+            </summary>
+        </member>
         <member name="M:StackExchange.NET.Interfaces.ISuggestedEdits.GetAllSuggestedEdits(StackExchange.NET.Models.SuggestedEditFilter)">
             <summary>
             Returns all the suggested edits in the systems.
@@ -361,6 +366,11 @@
             {ids} can contain up to 100 semicolon delimited ids. To find ids programmatically look for suggested_edit_id on suggested_edit objects.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:StackExchange.NET.Interfaces.ITags">
+            <summary>
+            The Tags interface which lists all possible operations.
+            </summary>
         </member>
         <member name="M:StackExchange.NET.Interfaces.ITags.GetAllTags(StackExchange.NET.Models.TagFilter)">
             <summary>
@@ -415,7 +425,8 @@
         </member>
         <member name="M:StackExchange.NET.Interfaces.ITags.GetTopAnswerersPosts(System.String,System.String)">
             <summary>
-            Get the top answer posters in a specific tag, either in the last month or for all time
+            Get the top answer posters in a specific tag, either in the last month or for all time.
+            Enter any tag for param1 and period can be all_time or month
             </summary>
             <param name="tag"></param>
             <param name="period"></param>
@@ -423,7 +434,8 @@
         </member>
         <member name="M:StackExchange.NET.Interfaces.ITags.GetTopAskers(System.String,System.String)">
             <summary>
-            Get the top question askers in a specific tag, either in the last month or for all time
+            Get the top question askers in a specific tag, either in the last month or for all time.
+            Enter any tag for param1 and period can be all_time or month
             </summary>
             <param name="tag"></param>
             <param name="period"></param>

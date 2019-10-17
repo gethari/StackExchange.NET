@@ -70,6 +70,15 @@ namespace StackExchange.NET.Helpers
 			return this;
 		}
 
+		public ApiUrlBuilder WithTagAndPeriod(string tag, string period)
+		{
+			MakeSure.ArgumentNotNull(tag,nameof(tag));
+			MakeSure.ArgumentNotNull(period,nameof(period));
+
+			_apiUrl = _apiUrl + $"{tag}/{period}";
+			return this;
+		}
+
 		public string GetApiUrl()
 		{
 			_apiUrl = $"{_apiUrl}?key={_apiKey}&{_filter}";
