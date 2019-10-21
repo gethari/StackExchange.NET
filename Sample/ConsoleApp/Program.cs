@@ -10,15 +10,15 @@ namespace StackExchange.NET_Example
 	{
 		static void Main(string[] args)
 		{
-			var client = new StackExchangeClient("your_ApiKey");
+			var client = new StackExchangeClient("yourApiKey");
 			var queryString = new AnswerFilters()
 			{
-				PageSize = 1,
-				Page = 1,
-				Sort = Sort.Votes
+				//PageSize = 1,
+				//Page = 1,
+				//Sort = Sort.Votes
 			};
 
-			//	var answers = client.Answers.GetAllAnswers(queryString);
+				var answers = client.Answers.GetAllAnswers(queryString);
 			var ids = new List<string>()
 						{
 								"44164379","6841479"
@@ -29,7 +29,7 @@ namespace StackExchange.NET_Example
 
 			var badgeFilter = new BadgeFilters()
 			{
-				Sort = BadgeSort.Name
+				Sort = Enums.BadgeSort.Name
 			};
 			//var badges = client.Badges.GetAllBadges(badgeFilter);
 
@@ -48,7 +48,7 @@ namespace StackExchange.NET_Example
 
 			var commentFilter = new CommentFilter()
 			{
-				Sort = CommentSort.Creation
+				Sort = Enums.CommentSort.Creation
 			};
 			//var comments = client.Comments.GetAllComments(commentFilter);
 
@@ -61,7 +61,7 @@ namespace StackExchange.NET_Example
 
 			var postFilter = new PostFilter()
 			{
-				Sort = PostSort.Creation
+				Sort = Enums.PostSort.Creation
 			};
 			//var posts = client.Posts.GetAllPosts(postFilter);
 
@@ -86,7 +86,7 @@ namespace StackExchange.NET_Example
 
 			var questionFilter = new QuestionFilters()
 			{
-				Sort = Sort.Activity
+				Sort = Enums.Sort.Activity
 			};
 
 			var qIds = new List<string>()
@@ -106,7 +106,7 @@ namespace StackExchange.NET_Example
 
 			var suggestedEditFilter = new SuggestedEditFilter()
 			{
-				Sort = Sort.Creation
+				Sort = Enums.Sort.Creation
 			};
 
 			var sEditIds = new List<string>()
@@ -115,7 +115,22 @@ namespace StackExchange.NET_Example
 			};
 
 			//var result = client.SuggestedEdits.GetAllSuggestedEdits(suggestedEditFilter);
-			var result = client.SuggestedEdits.GetSuggestedEditsByIds(sEditIds, suggestedEditFilter);
+			//var result = client.SuggestedEdits.GetSuggestedEditsByIds(sEditIds, suggestedEditFilter);
+			var tagFilter = new TagFilter();
+			var listOfTags = new List<string>()
+			{
+				"azure-functions", "azure"
+			};
+
+			//var tags = client.Tags.GetAllTags(tagFilter);
+			//var tags = client.Tags.GetTagsByNames(listOfTags,tagFilter);
+			//var tags = client.Tags.GetModeratorOnlyTags(tagFilter);
+			//var tags = client.Tags.GetAllTagSynonyms(tagFilter);
+			//var tags = client.Tags.GetFrequentlyAskedQuestions(listOfTags);
+			//var tags = client.Tags.GetRelatedTags(listOfTags);
+			//var tags = client.Tags.GetSynonymsForTags(listOfTags,tagFilter);
+			//var tags = client.Tags.GetTopAnswerersPosts("azure-functions","all_time");
+			var tags = client.Tags.GetTopAskers("azure-functions","all_time");
 			Console.ReadKey();
 		}
 	}

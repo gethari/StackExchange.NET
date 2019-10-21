@@ -71,6 +71,11 @@
             error_message
             </summary>
         </member>
+        <member name="T:StackExchange.NET.Models.AnswerFilters">
+            <summary>
+            This filter should be used while using the Answers methods.
+            </summary>
+        </member>
         <member name="M:StackExchange.NET.Helpers.ApiUrlBuilder.#ctor(System.String)">
             <summary>
             Constructor used to Build the api url internally
@@ -454,11 +459,6 @@
             </summary>
             <param name="tags"></param>
             <returns></returns>
-        </member>
-        <member name="T:StackExchange.NET.Models.AnswerFilters">
-            <summary>
-            This filter should be used while using the Answers methods.
-            </summary>
         </member>
     </members>
 </doc>

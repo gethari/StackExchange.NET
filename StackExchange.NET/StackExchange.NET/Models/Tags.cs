@@ -19,20 +19,4 @@ namespace StackExchange.NET.Models
 		[JsonProperty("name")]
 		public string Name { get; set; }
 	}
-
-	public enum TagSort
-	{
-		Popular,
-		Activity,
-		Name
-	}
-	public class TagFilter : Filter
-	{
-		public TagFilter()
-		{
-			Order = Models.Order.Desc;
-			Sort = Models.Sort.Creation;
-			Site = "stackoverflow";
-		}
-	}
 }

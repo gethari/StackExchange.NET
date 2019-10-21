@@ -77,8 +77,8 @@ namespace StackExchange.NET.Helpers
 
 		public ApiUrlBuilder WithTagAndPeriod(string tag, string period)
 		{
-			MakeSure.ArgumentNotNull(tag,nameof(tag));
-			MakeSure.ArgumentNotNull(period,nameof(period));
+			MakeSure.ArgumentNotNull(tag, nameof(tag));
+			MakeSure.ArgumentNotNull(period, nameof(period));
 
 			_apiUrl = _apiUrl + $"{tag}/{period}";
 			return this;
@@ -98,5 +98,4 @@ namespace StackExchange.NET.Helpers
 			return _apiUrl;
 		}
 	}
-
 }

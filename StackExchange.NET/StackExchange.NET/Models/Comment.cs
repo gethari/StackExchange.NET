@@ -25,20 +25,4 @@ namespace StackExchange.NET.Models
 		[JsonProperty("comment_id")]
 		public long CommentId { get; set; }
 	}
-
-	public enum CommentSort
-	{
-		Creation,
-		Votes
-	}
-
-	public class CommentFilter : Filter
-	{
-		public CommentFilter()
-		{
-			Order = Models.Order.Desc;
-			Sort = CommentSort.Creation;
-			Site = "stackoverflow";
-		}
-	}
 }

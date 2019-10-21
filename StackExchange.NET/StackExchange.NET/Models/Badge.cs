@@ -23,21 +23,4 @@ namespace StackExchange.NET.Models
 		[JsonProperty("name")]
 		public string Name { get; set; }
 	}
-
-	public enum BadgeSort
-	{
-		Rank,
-		Name,
-		Type
-	}
-	public class BadgeFilters : Filter
-	{
-		public BadgeFilters()
-		{
-			Order = Models.Order.Desc;
-			Sort = BadgeSort.Name;
-			Site = "stackoverflow";
-		}
-	}
-
 }

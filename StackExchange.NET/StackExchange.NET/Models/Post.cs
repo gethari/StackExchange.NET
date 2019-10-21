@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace StackExchange.NET.Models
@@ -29,36 +28,5 @@ namespace StackExchange.NET.Models
 
 		[JsonProperty("link")]
 		public Uri Link { get; set; }
-	}
-
-	public enum PostSort
-	{
-		Votes,
-		Creation
-	}
-	public class PostFilter : Filter
-	{
-		public PostFilter()
-		{
-			Order = Models.Order.Desc;
-			Sort = PostSort.Creation;
-			Site = "stackoverflow";
-		}
-	}
-
-	public enum SuggestedEdit
-	{
-		Creation,
-		Approval,
-		Rejection
-	}
-	public class SuggestedEditFilter : Filter
-	{
-		public SuggestedEditFilter()
-		{
-			Order = Models.Order.Desc;
-			Sort = SuggestedEdit.Creation;
-			Site = "stackoverflow";
-		}
 	}
 }

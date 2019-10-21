@@ -28,18 +28,5 @@ namespace StackExchange.NET.Models
 		[JsonProperty("question_id")]
 		public long QuestionId { get; set; }
 	}
-
-	/// <summary>
-	/// This filter should be used while using the Answers methods.
-	/// </summary>
-	public class AnswerFilters : Filter
-	{
-		public AnswerFilters()
-		{
-			Order = Models.Order.Desc;
-			Sort = Models.Sort.Activity;
-			Site = "stackoverflow";
-		}
-	}
 }
 
