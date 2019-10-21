@@ -1,6 +1,8 @@
 # StackExchange.NET
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
+[![CodeFactor](https://www.codefactor.io/repository/github/gethari/stackexchange.net/badge)](https://www.codefactor.io/repository/github/gethari/stackexchange.net)
+
 ```
  _____ _             _    ______          _                              _   _ ______ _______ 
  / ____| |           | |  |  ____|        | |                            | \ | |  ____|__   __|

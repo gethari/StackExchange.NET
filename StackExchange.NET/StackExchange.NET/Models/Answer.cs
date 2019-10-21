@@ -29,4 +29,3 @@ namespace StackExchange.NET.Models
 		public long QuestionId { get; set; }
 	}
 }
-
