@@ -5,27 +5,24 @@ using System.Collections.Generic;
 using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
-using StackExchange.NET.Clients;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
 
 #endregion
 
-namespace Tests
+namespace Tests.Client
 {
-	public class AnswerClientTests
+	public class AnswerClient : BaseClient
 	{
-		private BaseResponse<Answer> _baseResponse;
-		private IAnswers _answers;
-		private AnswerFilters _answerFilters;
-		private StackExchangeClient _client;
-		[SetUp]
-		public void Setup()
+		private readonly BaseResponse<Answer> _baseResponse;
+		private readonly IAnswers _answers;
+		private readonly AnswerFilters _answerFilters;
+
+		public AnswerClient()
 		{
 			_baseResponse = Substitute.For<BaseResponse<Answer>>();
 			_answers = Substitute.For<IAnswers>();
 			_answerFilters = Substitute.For<AnswerFilters>();
-			_client = Substitute.For<StackExchangeClient>("someKey");
 		}
 
 		[Test]
@@ -37,7 +34,7 @@ namespace Tests
 		[Test]
 		public void GetAllAnswersWithNullFilter()
 		{
-			Assert.Throws<ArgumentNullException>(() => _client.Answers.GetAllAnswers(null));
+			Assert.Throws<ArgumentNullException>(() => Client.Answers.GetAllAnswers(null));
 		}
 
 		[Test]
@@ -50,7 +47,14 @@ namespace Tests
 		[Test]
 		public void GetAnswerByIdsWithNull()
 		{
-			Assert.Throws<ArgumentNullException>(() => _client.Answers.GetAnswerByIds(null, _answerFilters));
+			Assert.Throws<ArgumentNullException>(() => Client.Answers.GetAnswerByIds(null, _answerFilters));
+		}
+
+		[Test]
+		public void GetCommentsOnAnswers()
+		{
+			var ids = Substitute.For<ICollection<string>>();
+			_answers.GetCommentsOnAnswers(ids.ToList(), _answerFilters).Returns(_baseResponse);
 		}
 	}
 }
