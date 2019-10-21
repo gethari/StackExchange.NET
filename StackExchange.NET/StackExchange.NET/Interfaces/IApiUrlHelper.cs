@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using StackExchange.NET.Helpers;
 using StackExchange.NET.Models;
 
-namespace StackExchange.NET.Helpers
+namespace StackExchange.NET.Interfaces
 {
 	public interface IApiUrlHelper
 	{

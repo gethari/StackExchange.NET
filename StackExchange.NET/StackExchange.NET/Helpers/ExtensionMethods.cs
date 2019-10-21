@@ -1,10 +1,14 @@
-﻿using System;
+﻿#region Using Directives
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using Newtonsoft.Json;
 using StackExchange.NET.Models;
+
+#endregion
 
 namespace StackExchange.NET.Helpers
 {
@@ -26,20 +30,51 @@ namespace StackExchange.NET.Helpers
 		{
 			if (filters == null)
 				return string.Empty;
-			var dictionary = new Dictionary<string, dynamic>()
-			{
-				{"fromdate",filters.FromDate.ToUnixTime() },
-				{"todate",filters.ToDate.ToUnixTime() },
-				{"max",filters.Max.ToUnixTime() },
-				{"min", filters.Min.ToUnixTime()},
-				{"order", filters.Order.ToString().ToLower()},
-				{"Page", filters.Page},
-				{"PageSize", filters.PageSize},
-				{"Sort", filters.Sort.ToString().ToLower()},
-				{"Site", filters.Site.ToLower()},
-			};
+			//var dictionary = new Dictionary<string, dynamic>()
+			//{
+			//	{"fromdate",filters.FromDate.ToUnixTime() },
+			//	{"todate",filters.ToDate.ToUnixTime() },
+			//	{"max",filters.Max.ToUnixTime() },
+			//	{"min", filters.Min.ToUnixTime()},
+			//	{"order", filters.Order.ToString().ToLower()},
+			//	{"Page", filters.Page},
+			//	{"PageSize", filters.PageSize},
+			//	{"Sort", filters.Sort.ToString().ToLower()},
+			//	{"Site", filters.Site.ToLower()},
+			//};
 
+			var dictionary = filters.AddValidKeys();
 			return dictionary.ToQueryString();
+		}
+
+		internal static Dictionary<string, dynamic> AddValidKeys(this Filter filter)
+		{
+			var result = new Dictionary<string, dynamic>();
+
+			#region IsThereABetterWayofDoingThis
+
+			if (filter.FromDate != null)
+				result.Add("fromdata", filter.FromDate.ToUnixTime());
+			if (filter.ToDate != null)
+				result.Add("todate", filter.ToDate.ToUnixTime());
+			if (filter.Max != null)
+				result.Add("max", filter.Max.ToUnixTime());
+			if (filter.Min != null)
+				result.Add("min", filter.Min.ToUnixTime());
+			if (filter.Order != null)
+				result.Add("order", filter.Order.ToString().ToLower());
+			if (filter.Page != null)
+				result.Add("page", filter.Page);
+			if (filter.PageSize != null)
+				result.Add("pageSize", filter.PageSize);
+			if (filter.Sort != null)
+				result.Add("sort", filter.Sort.ToString().ToLower());
+			if (filter.Site != null)
+				result.Add("site", filter.Site.ToLower());
+
+			#endregion
+
+			return result;
 		}
 
 		internal static BaseResponse<T> ValidateApiResponse<T>(this Data<T> data)
@@ -72,6 +107,5 @@ namespace StackExchange.NET.Helpers
 		{
 			return JsonConvert.DeserializeObject<T>(content.Content.ReadAsStringAsync().Result);
 		}
-
 	}
 }

@@ -7,9 +7,14 @@ namespace StackExchange.NET.Clients
 	public partial class StackExchangeClient
 	{
 		private readonly string _baseApiUrl;
-		private readonly HttpClient _httpClient;
+		private static HttpClient _httpClient;
 		private readonly string _apiKey;
 
+		/// <summary>
+		/// Provide your apiKey to access the Client
+		/// </summary>
+		/// <param name="apiKey"></param>
+		/// <exception cref="Exception"></exception>
 		public StackExchangeClient(string apiKey)
 		{
 			if (string.IsNullOrWhiteSpace(apiKey))

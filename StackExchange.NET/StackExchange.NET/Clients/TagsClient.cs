@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿#region Using Directives
+
+using System.Collections.Generic;
 using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
+
+#endregion
 
 namespace StackExchange.NET.Clients
 {
@@ -45,7 +49,7 @@ namespace StackExchange.NET.Clients
 			return response;
 		}
 
-		BaseResponse<TagSynonyms> ITags.GetAllTagSynonyms(TagFilter filter)
+		BaseResponse<TagSynonym> ITags.GetAllTagSynonyms(TagFilter filter)
 		{
 			var url = ApiUrlBuilder
 				.Initialize(_apiKey)
@@ -53,7 +57,7 @@ namespace StackExchange.NET.Clients
 				.WithFilter(filter)
 				.GetApiUrl();
 
-			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagSynonyms>>().ValidateApiResponse();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagSynonym>>().ValidateApiResponse();
 			return response;
 		}
 
@@ -81,7 +85,7 @@ namespace StackExchange.NET.Clients
 			return response;
 		}
 
-		BaseResponse<TagSynonyms> ITags.GetSynonymsForTags(List<string> tags, TagFilter filter)
+		BaseResponse<TagSynonym> ITags.GetSynonymsForTags(List<string> tags, TagFilter filter)
 		{
 			var url = ApiUrlBuilder
 				.Initialize(_apiKey)
@@ -90,7 +94,7 @@ namespace StackExchange.NET.Clients
 				.WithIds(tags,"synonyms")
 				.GetApiUrl();
 
-			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagSynonyms>>().ValidateApiResponse();
+			var response = _httpClient.GetAsync(url).Result.ReadAsJsonAsync<Data<TagSynonym>>().ValidateApiResponse();
 			return response;
 		}
 

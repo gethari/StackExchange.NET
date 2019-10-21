@@ -1,8 +1,12 @@
-﻿using System;
+﻿#region Using Directives
+
+using System;
 using System.Collections.Generic;
 using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
+
+#endregion
 
 namespace StackExchange.NET.Clients
 {

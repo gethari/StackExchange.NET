@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿#region Using Directives
+
+using System.Collections.Generic;
 using System.Web;
+using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;
+
+#endregion
 
 namespace StackExchange.NET.Helpers
 {

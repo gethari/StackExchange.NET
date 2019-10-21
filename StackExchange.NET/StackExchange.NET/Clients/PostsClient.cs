@@ -1,8 +1,6 @@
 ﻿#region Using Directives
 
-using System;
 using System.Collections.Generic;
-using System.Web;
 using StackExchange.NET.Helpers;
 using StackExchange.NET.Interfaces;
 using StackExchange.NET.Models;

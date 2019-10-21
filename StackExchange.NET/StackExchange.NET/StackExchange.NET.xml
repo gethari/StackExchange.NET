@@ -34,6 +34,13 @@
             StackExchangeClient used to perform operations on APIs.
             </summary>
         </member>
+        <member name="M:StackExchange.NET.Clients.StackExchangeClient.#ctor(System.String)">
+            <summary>
+            Provide your apiKey to access the Client
+            </summary>
+            <param name="apiKey"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="P:StackExchange.NET.Clients.StackExchangeClient.SuggestedEdits">
             <summary>
             The SuggestedEdits interface which lists all possible operations.

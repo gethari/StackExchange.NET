@@ -32,7 +32,7 @@ namespace StackExchange.NET.Interfaces
 		/// </summary>
 		/// <param name="filter"></param>
 		/// <returns></returns>
-		BaseResponse<TagSynonyms> GetAllTagSynonyms(TagFilter filter);
+		BaseResponse<TagSynonym> GetAllTagSynonyms(TagFilter filter);
 		/// <summary>
 		/// Get frequently asked questions in a set of tags.
 		/// </summary>
@@ -51,7 +51,7 @@ namespace StackExchange.NET.Interfaces
 		/// <param name="tags"></param>
 		/// <param name="filter"></param>
 		/// <returns></returns>
-		BaseResponse<TagSynonyms> GetSynonymsForTags(List<string> tags, TagFilter filter);
+		BaseResponse<TagSynonym> GetSynonymsForTags(List<string> tags, TagFilter filter);
 		/// <summary>
 		/// Get the top answer posters in a specific tag, either in the last month or for all time.
 		/// Enter any tag for param1 and period can be all_time or month

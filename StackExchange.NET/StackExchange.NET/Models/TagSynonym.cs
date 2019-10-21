@@ -2,7 +2,7 @@
 
 namespace StackExchange.NET.Models
 {
-    public class TagSynonyms
+    public class TagSynonym
     {
 	    [JsonProperty("creation_date")]
 	    public long CreationDate { get; set; }

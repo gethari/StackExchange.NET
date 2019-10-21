@@ -50,6 +50,12 @@ namespace StackExchange.NET.Models
 	}
 	public class Filter
 	{
+		public Filter()
+		{
+			Order = Models.Order.Desc;
+			Site = "stackoverflow";
+			Sort = Models.Sort.Activity;
+		}
 		public int? Page { get; set; }
 		public int? PageSize { get; set; }
 		public DateTime? FromDate { get; set; }
